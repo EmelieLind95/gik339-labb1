@@ -114,12 +114,31 @@ const add = (num1, num2) => {
     let arg1;
     let sum = false;
     
+    /*Output ger true, då den kollas mot num1==0; och sum = false; typkonverteras till en siffra, vilket blir 0, då kontrolleras 0 == 0. 
+    output blir false, då 1 utvärderas mot num2==="0", och det är en strikt jämförelse. 1 är en siffra och den kontrolleras mot strängen "0"
+    Outputen blir false då 1 inte är lika med === 0. 
+    Outputen blir false, då num1==NaN 
+    outputen blir falsy, då num1 är false. 
+    sedan kontrolleras num1, alltså sum, i if satsen, den kontrolleras mot villkoren null och defined
+    men typof villkoret är typeof num1==="number", vilket blir false, då sum = false är en boolean.. 
+    Det gör att if satsen blir false och else körs istället. */
+
     console.log("--Test 1---");
     console.log (add(sum, 1));
 
+    /*Output ger true, då den kollas mot num1==0; och sum = false; typkonverteras till en siffra, vilket blir 0, då kontrolleras 0 == 0. 
+     output blir false, då 1 utvärderas mot num2==="0", och det är en strikt jämförelse. 3 är en siffra och den kontrolleras mot strängen "0"
+     Outputen blir false då 3 inte är lika med === 0. 
+     Outputen blir false, då num1==NaN 
+     output blir truthy, då strängen inte är tom.
+     Sedan kontrolleras num1, alltså "0", och blir false då det är en sträng och inte en typeof === "number
+     och returner else istället*/
+    
     console.log("--Test 2---");
     console.log(add("0", 3));
-
+    /* 
+        
+    */
     console.log("--Test 3---");
     console.log(add(3, "num1"));
 
@@ -135,7 +154,7 @@ const add = (num1, num2) => {
     console.log("--Test 7---");
     console.log(add("hund", num1));
 
-    console.log(num1);
+    console.log( num1);
     console.log(sum);
 
     /*
@@ -159,7 +178,10 @@ const add = (num1, num2) => {
         num1 och num2 är parametrar, och det som står inom parentesen i anropet, alltså 1 och 3, är argument.
 
       2. Vilket output får du allra sist (värdet i num1) och varför?
-
+         outputen som jag får är 0. Då den är satt som const num1 = 0; 
+         Och värdet kommer inte att ändras. 
+         Parametern num1 är en annan variabel som har samma namn. Då num1 redan är deklarerad som const i sitt scope, 
+         kommer inte ett nytt värde tilldelas eller skrivas över, den påverkas inte av det nya värdet num1 får i funktionen. 
 
       3. Förklarar steg för steg varför output på respektive rad resulterar i vad de gör.
 
