@@ -72,24 +72,25 @@ const add = (num1, num2) => {
     console.log(num1 == 0);
     console.log(num2 ==='0');
     console.log(num2 === 0);
-    console.log(num1 == NaN);
+    console.log(num1 == NaN); //not-a number value, blir alltid false NaN är inte lika med något. 
+                               
     
     console.log(num1 ? "truthy" : "falsy");
 
-    if ( num1 !== null && num1 !== undefined && typeof num1 === "number" 
-         && num2 !== null && num2 !== undefined && typeof num2 === "number") {
+    if ( num1 !== null && num1 !== undefined && typeof num1 === "number" && !Number.isNaN(num1)
+         && num2 !== null && num2 !== undefined && typeof num2 === "number" && !Number.isNaN(num2)) {
             return num1 + num2;
     }
     else {
         
-        return "villkoren uppfylls inte, ogiltig input"
+        return "villkoren uppfylls inte, ogiltig input";
     }
 };
 
 /*
     1. Förklarar vad en ternary operator är och hur den skiljer sig från en if()-sats.
         En ternary operator(villkorsoperator) är ett kortare sätt att skriva en if-sats. Då skriver man ut villkoren i en rad. 
-        Det kombinerar tre uutryck i ett enda uttryck. 
+        Det kombinerar tre utryck i ett enda uttryck. 
         det är uppbyggt så här villkor ? värdet om sant :  värdet om falskt;
         ? betyder att villkoret utvärderas. Exempel från koden console.log(num1 ? "truthy" : "falsy");
         num1 utvärderas som en boolean om num1 är truthy returneras det värdet "truthy", annars returneras "falsy". 
@@ -114,26 +115,22 @@ const add = (num1, num2) => {
     let arg1;
     let sum = false;
     
-    /*Output ger true, då den kollas mot num1==0; och sum = false; typkonverteras till en siffra, vilket blir 0, då kontrolleras 0 == 0. 
-    output blir false, då 1 utvärderas mot num2==="0", och det är en strikt jämförelse. 1 är en siffra och den kontrolleras mot strängen "0"
-    Outputen blir false då 1 inte är lika med === 0. 
-    Outputen blir false, då num1==NaN 
-    outputen blir falsy, då num1 är false. 
-    sedan kontrolleras num1, alltså sum, i if satsen, den kontrolleras mot villkoren null och defined
-    men typof villkoret är typeof num1==="number", vilket blir false, då sum = false är en boolean.. 
-    Det gör att if satsen blir false och else körs istället. */
+    /*add(sum, 1) → num1 = false (värdet i sum), num2 = 1
+     num1==0; = true och sum = false; typkonverteras till en siffra, vilket blir 0, då kontrolleras 0 == 0 = true. 
+     num2==="0" = false, och det är en strikt jämförelse. 1 är en siffra och den kontrolleras mot strängen "0"
+     num2 === 0; = false, då 1 inte är lika med 0. Strikt jämförelse. 
+     num1==NaN; = false, NaN är aldrig lika med något, inte ens sig självt.
+     villkorsoperatorn ger falsy, då num1 false. 
+     Sedan kontrolleras num1, alltså sum, i if satsen, den kontrolleras mot villkoren null och undefined
+    men typeof villkoret är typeof num1==="number", vilket blir false, då sum = false är en boolean.
+    Det gör att if satsen blir false och else körs istället och returnerar "villkoren uppfylls inte, ogiltig input" */
 
     console.log("--Test 1---");
     console.log (add(sum, 1));
 
-    /*Output ger true, då den kollas mot num1==0; och sum = false; typkonverteras till en siffra, vilket blir 0, då kontrolleras 0 == 0. 
-     output blir false, då 1 utvärderas mot num2==="0", och det är en strikt jämförelse. 3 är en siffra och den kontrolleras mot strängen "0"
-     Outputen blir false då 3 inte är lika med === 0. 
-     Outputen blir false, då num1==NaN 
-     output blir truthy, då strängen inte är tom.
-     Sedan kontrolleras num1, alltså "0", och blir false då det är en sträng och inte en typeof === "number
-     och returner else istället*/
-    
+    /*
+
+     */
     console.log("--Test 2---");
     console.log(add("0", 3));
     /* 
@@ -142,18 +139,29 @@ const add = (num1, num2) => {
     console.log("--Test 3---");
     console.log(add(3, "num1"));
 
+    /*
+    
+     */
     console.log("--Test 4---");
     console.log(add(-5, num1));
-
+    /*
+    
+     */
     console.log("--Test 5---");
     console.log(add(arg1, 7));
-
+    /*
+        
+    */
     console.log("--Test 6---");
     console.log(add());
-
+    /*
+    
+     */
     console.log("--Test 7---");
-    console.log(add("hund", num1));
-
+    console.log(add(NaN, num1));
+    /*
+    
+     */
     console.log( num1);
     console.log(sum);
 
@@ -184,6 +192,7 @@ const add = (num1, num2) => {
          kommer inte ett nytt värde tilldelas eller skrivas över, den påverkas inte av det nya värdet num1 får i funktionen. 
 
       3. Förklarar steg för steg varför output på respektive rad resulterar i vad de gör.
+         Se koden. 
 
     
     */
