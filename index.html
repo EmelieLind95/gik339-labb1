@@ -13,7 +13,8 @@
  
   <!--1. Det är best practice att placera den längst ner i body eller inom head.
            Placeringen <script> har betydelse i hur HTML koden körs, vilket är uppifrån och ned. 
-        2. attributet defer, används om man placerarr script högst upp i head i HTML filen. 
-            defer görs så att webbläsaren skjuter upp körningen av scriptet tills hela HTML dokumentet är inläst-->
+        2. attributet defer, används om man placerar script högst upp i head i HTML filen. 
+            utan defer om scriptet läggs i head, körs scriptet först innan HTML koden finns, och då hittar script inte HTML elementen .            
+           defer görs så att webbläsaren skjuter upp körningen av scriptet tills hela HTML dokumentet är inläst-->
 </body>
 </html>
