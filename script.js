@@ -9,7 +9,7 @@ let car1 = "Volvo";
 const car2 = "Saab";
 var car3 ="KIA";
 
-// car1= "Honda";  // Tilldelar variablen car1 ett nytt värde, det gamla värdet skrivs över. 
+// car1= "Honda";  // Tilldelar variablen car1 ett nytt värde, det gamla värdet skrivs över. Det skapas en ny variabel.
 // console.log(car1);
 // car2 = "Opel"  //tilldelar car2 ett nytt värde och skriver ut. Ej tillåtet
 // console.log(car2);
@@ -18,7 +18,7 @@ var car3 ="KIA";
 
 
 // console.log(car1);
-// car2 = "Opel";  // tilldelar car 2 ett nytt värde och skriver ut. Tillåtet.
+// car2 = "Opel";  // tilldelar car 2 ett nytt värde och skriver ut. 
 // console.log(car2);
 // console.log(car3);
 
@@ -57,7 +57,7 @@ var car3 ="KIA";
     console.log(add(1,3));
 
     3. Att en funktion returnerar något betyder att den skickar tillbaka ett värde till den som anropade funktionen, 
-       som det går att se i console.log(add(1,3)); och konsolen returnerar då värdet 4.
+       som det går att se i console.log(add(1,3)); och funktionen returnerar då värdet 4.
        return är ett nyckelord och det som står efter är värdet, i detta fall resultatet av num1 + num2.
        En funktion kan även returnera strängar, booleans osv.
        Om en funktion saknar return blir returvärdet undefined.
@@ -99,7 +99,7 @@ const add = (num1, num2) => {
        
     2. Vad skillnaden mellan att använda två (==) och tre (===) likhetstecken är.
         med att använda == så typkonverterar JavaScript, det blir en implicit typkonverteing.
-        "3" == 3, gör att JavaScrips konverterar strängen till ett number (eller tvärtom) och det blir true. 
+        "3" == 3, gör att JavaScrips konverterar strängen till ett number och det blir true. 
 
          Med === så görs det en strikt jämförelse, då måste datatyperna vara samma.
           "3" === 3 blir då false. För det jämför då en sträng med en number. 
@@ -115,7 +115,12 @@ const add = (num1, num2) => {
     let arg1;
     let sum = false;
     
-    /*add(sum, 1) → num1 = false (värdet i sum), num2 = 1
+    
+
+    console.log("--Test 1---");
+    console.log (add(sum, 1));
+/* Test 1 output
+    add(sum, 1) → num1 = false (värdet i sum), num2 = 1
      num1==0; = true och sum = false; typkonverteras till en siffra, vilket blir 0, då kontrolleras 0 == 0 = true. 
      num2==="0" = false, och det är en strikt jämförelse. 1 är en siffra och den kontrolleras mot strängen "0"
      num2 === 0; = false, då 1 inte är lika med 0. Strikt jämförelse. 
@@ -125,46 +130,84 @@ const add = (num1, num2) => {
     men typeof villkoret är typeof num1==="number", vilket blir false, då sum = false är en boolean.
     Det gör att if satsen blir false och else körs istället och returnerar "villkoren uppfylls inte, ogiltig input" */
 
-    console.log("--Test 1---");
-    console.log (add(sum, 1));
-
-    /*
-
-     */
     console.log("--Test 2---");
     console.log(add("0", 3));
-    /* 
-        
-    */
+    /*
+    Test 2 output
+     true
+     false
+     false
+     false
+     I villkorsoperatorn blir retur värdet truthy, 
+     else satsen körs och returnerar "villkoren uppfylls inte, ogiltig input" då "0" är en sträng och inte en number.
+     */
+    
     console.log("--Test 3---");
     console.log(add(3, "num1"));
-
-    /*
-    
-     */
+/* Test 3 output 
+      false 
+      false
+      false
+      false
+      truthy
+      returvärdet blir "villkoren uppfylls inte, ogiltig input" eftersom "num1" är en sträng. 
+    */
+   
     console.log("--Test 4---");
     console.log(add(-5, num1));
-    /*
-    
+     /*  Test 4
+        false 
+        false 
+        true
+        false
+        truthy
+         if satsen körs och returnerar värdet -5 då det är en number. 
      */
+    
+   
     console.log("--Test 5---");
     console.log(add(arg1, 7));
-    /*
+     /* test 5
+      false
+      false
+      false
+      false
+      falsy
+      else ger returvärdet "villkoren uppfylls inte, ogiltig input" 
+       då arg1 inte har något värde, det är undefined. 
+     */
         
-    */
     console.log("--Test 6---");
     console.log(add());
-    /*
+    /* test 6
+     false
+     false 
+     false
+     false 
+     falsy 
+     else "villkoren uppfylls inte, ogiltig input" 
+     då vi inte skickar in något argument att jämföra med, det är undefined. 
     
      */
     console.log("--Test 7---");
     console.log(add(NaN, num1));
-    /*
-    
-     */
-    console.log( num1);
-    console.log(sum);
+    /* test 7
+     false 
+     false
+     true
+     false
+     falsy
+     else "villkoren uppfylls inte, ogiltig input" 
+     NaN jämförs mot typeof num1 = "Number" och där blir den true, för NaN är ett number, 
+     men sen jämförs den mot !NumberIsNaN (num1), och här blir den false. 
+    */
 
+
+    console.log( num1);
+    // output: 0
+    console.log(sum);
+    //output: false
+ 
     /*
       1.Förklarar skillnaden mellan parameter, variabel och argument.
         En parameter är det det som gör att man kan skicka ett värde till en funktion. 
@@ -191,8 +234,12 @@ const add = (num1, num2) => {
          Parametern num1 är en annan variabel som har samma namn. Då num1 redan är deklarerad som const i sitt scope, 
          kommer inte ett nytt värde tilldelas eller skrivas över, den påverkas inte av det nya värdet num1 får i funktionen. 
 
-      3. Förklarar steg för steg varför output på respektive rad resulterar i vad de gör.
-         Se koden. 
+      3. Förklarar steg för steg vad som händer i funktionen när den anropas: vilka värden parametrarna får, 
+         vad jämförelserna och villkorsoperatorn ger, om if-satsen släpps igenom, och vilket värde som returneras. 
+         Det räcker att göra hela genomgången för ett av anropen – för övriga anrop räcker det att förklara returvärdet.
+         
+           --Se kommentarer i koden ---
+     
 
     
     */
