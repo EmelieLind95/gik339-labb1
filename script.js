@@ -9,7 +9,7 @@ let car1 = "Volvo";
 const car2 = "Saab";
 var car3 ="KIA";
 
-// car1= "Honda";  // Tilldelar variablen car1 ett nytt värde, det gamla värdet skrivs över. Det skapas en ny variabel.
+// car1= "Honda";  // Tilldelar variablen car1 ett nytt värde, det gamla värdet skrivs över. 
 // console.log(car1);
 // car2 = "Opel"  //tilldelar car2 ett nytt värde och skriver ut. Ej tillåtet
 // console.log(car2);
